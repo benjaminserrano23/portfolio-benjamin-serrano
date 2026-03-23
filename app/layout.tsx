@@ -19,8 +19,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Benjamín Serrano | Software Engineer",
-    template: "%s | Benjamín Serrano",
+    default: "Benjamín Serrano Ercoli | Software Engineer",
+    template: "%s | Benjamín Serrano Ercoli",
   },
   description:
     "Software engineer portfolio — projects and contact information.",

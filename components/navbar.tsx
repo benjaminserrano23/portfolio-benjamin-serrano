@@ -53,7 +53,7 @@ export function Navbar() {
           className="bg-clip-text text-base font-bold tracking-tight text-transparent transition-opacity hover:opacity-80"
           style={{ backgroundImage: "linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%)" }}
         >
-          Benjamín Serrano
+          Benjamín Serrano Ercoli
         </Link>
 
         {/* Desktop */}
@@ -93,9 +93,9 @@ export function Navbar() {
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               {open ? (
-                <><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></>
+                <><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></>
               ) : (
-                <><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="20" y2="16"/></>
+                <><line x1="4" y1="8" x2="20" y2="8" /><line x1="4" y1="16" x2="20" y2="16" /></>
               )}
             </svg>
           </button>
