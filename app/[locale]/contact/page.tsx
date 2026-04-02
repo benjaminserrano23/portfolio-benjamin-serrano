@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { setRequestLocale } from "next-intl/server";
 import { ContactContent } from "@/components/contact-content";
 
 export const metadata: Metadata = {
@@ -6,6 +7,13 @@ export const metadata: Metadata = {
   description: "Get in touch with Benjamín Serrano Ercoli.",
 };
 
-export default function ContactPage() {
+export default async function ContactPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   return <ContactContent />;
 }

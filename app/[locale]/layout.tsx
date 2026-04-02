@@ -1,11 +1,16 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages, setRequestLocale } from "next-intl/server";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { routing } from "@/i18n/routing";
 import { ThemeProvider } from "@/components/theme-provider";
-import { LocaleProvider } from "@/components/locale-provider";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { MouseGlow } from "@/components/mouse-glow";
-import "./globals.css";
+import { JsonLd } from "@/components/json-ld";
+import "../globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,23 +22,66 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const BASE_URL = "https://benjaminserrano.dev";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(BASE_URL),
   title: {
     default: "Benjamín Serrano Ercoli | Software Engineer",
     template: "%s | Benjamín Serrano Ercoli",
   },
   description:
-    "Software engineer portfolio — projects and contact information.",
+    "Portfolio of Benjamín Serrano Ercoli — Full Stack Software Engineer specialized in TypeScript, React, Next.js, and Node.js. Thesis on static analysis for JS/TS ecosystems.",
+  keywords: ["Software Engineer", "Full Stack", "TypeScript", "React", "Next.js", "Node.js", "Portfolio"],
+  authors: [{ name: "Benjamín Serrano Ercoli", url: BASE_URL }],
+  creator: "Benjamín Serrano Ercoli",
+  openGraph: {
+    type: "website",
+    siteName: "Benjamín Serrano Ercoli",
+    title: "Benjamín Serrano Ercoli | Software Engineer",
+    description:
+      "Full Stack Software Engineer — TypeScript, React, Next.js, Node.js. Available for work.",
+    url: BASE_URL,
+    images: [
+      {
+        url: "/Yo.jpg",
+        width: 800,
+        height: 800,
+        alt: "Benjamín Serrano Ercoli",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Benjamín Serrano Ercoli | Software Engineer",
+    description:
+      "Full Stack Software Engineer — TypeScript, React, Next.js, Node.js. Available for work.",
+    images: ["/Yo.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
-export default function RootLayout({
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
+
+export default async function RootLayout({
   children,
+  params,
 }: Readonly<{
   children: React.ReactNode;
+  params: Promise<{ locale: string }>;
 }>) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const messages = await getMessages();
+
   return (
     <html
-      lang="en"
+      lang={locale}
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
@@ -56,13 +104,16 @@ export default function RootLayout({
             style={{ animation: "blob-drift-3 26s ease-in-out infinite", willChange: "transform" }}
           />
         </div>
+        <JsonLd />
         <ThemeProvider>
-          <LocaleProvider>
+          <NextIntlClientProvider messages={messages}>
             <Navbar />
             <main className="relative flex-1">{children}</main>
             <Footer />
-          </LocaleProvider>
+          </NextIntlClientProvider>
         </ThemeProvider>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

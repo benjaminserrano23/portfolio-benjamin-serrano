@@ -8,6 +8,17 @@ export interface Project {
   featured?: boolean;
 }
 
+export interface Experience {
+  id: string;
+  role: { es: string; en: string };
+  organization: string;
+  type: "internship" | "thesis" | "academic";
+  period: { es: string; en: string };
+  description: { es: string; en: string };
+  achievements: { es: string[]; en: string[] };
+  stack: string[];
+}
+
 export interface BlogPost {
   slug: string;
   title: string;

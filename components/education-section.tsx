@@ -1,19 +1,19 @@
 "use client";
 
-import { useLocale } from "./locale-provider";
+import { useTranslations } from "next-intl";
 import { SectionHeading } from "./section-heading";
 
 const CV_PATH = "/CV_Benjamín_Serrano_Ercoli.pdf";
 const GRAD_YEAR = "2026";
 
 export function EducationSection() {
-  const { t } = useLocale();
+  const t = useTranslations();
 
   return (
     <section className="mx-auto max-w-5xl px-6 pb-16">
       <SectionHeading
-        title={t.sections.education}
-        description={t.sections.educationDesc}
+        title={t("sections.education")}
+        description={t("sections.educationDesc")}
       />
 
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between rounded-2xl border border-border bg-card px-6 py-5 transition-all duration-300 hover:border-primary/40 hover:shadow-lg dark:hover:shadow-primary/5">
@@ -26,13 +26,13 @@ export function EducationSection() {
           </div>
           <div>
             <p className="text-xs font-semibold uppercase tracking-widest text-primary">
-              {t.education.graduated} {GRAD_YEAR}
+              {t("education.graduated")} {GRAD_YEAR}
             </p>
             <h3 className="text-base font-bold text-card-foreground">
-              {t.education.degree}
+              {t("education.degree")}
             </h3>
             <p className="text-sm text-muted-foreground">
-              {t.education.university} · {t.education.location}
+              {t("education.university")} · {t("education.location")}
             </p>
           </div>
         </div>
@@ -47,7 +47,7 @@ export function EducationSection() {
           <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /><polyline points="15 3 21 3 21 9" /><line x1="10" y1="14" x2="21" y2="3" />
           </svg>
-          {t.education.viewCV}
+          {t("education.viewCV")}
         </a>
       </div>
     </section>

@@ -1,3 +1,8 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { fadeInUp, viewportConfig } from "@/lib/motion";
+
 export function SectionHeading({
   title,
   description,
@@ -8,7 +13,13 @@ export function SectionHeading({
   badge?: string;
 }) {
   return (
-    <div className="mb-10">
+    <motion.div
+      variants={fadeInUp}
+      initial="hidden"
+      whileInView="visible"
+      viewport={viewportConfig}
+      className="mb-10"
+    >
       {badge && (
         <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-widest text-primary">
           {badge}
@@ -21,6 +32,6 @@ export function SectionHeading({
       {description && (
         <p className="mt-3 ml-4 text-muted-foreground">{description}</p>
       )}
-    </div>
+    </motion.div>
   );
 }

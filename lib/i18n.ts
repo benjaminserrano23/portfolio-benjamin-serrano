@@ -11,7 +11,7 @@ export const translations = {
       greeting: "Hola, soy",
       name: "Benjamín Serrano Ercoli",
       tagline:
-        "Construyo productos digitales de punta a punta: arquitectura de sistemas, backend robusto, seguridad desde el diseño e interfaces cuidadas al detalle, siempre con foco en código limpio, buenas prácticas y una experiencia de usuario que marque la diferencia.",
+        "Ingeniero Informático especializado en desarrollo fullstack — desde el diseño de la arquitectura hasta el frontend. Me apasiona escribir código limpio, construir sistemas seguros y crear interfaces que se sientan bien al usarlas.",
       viewProjects: "Ver Proyectos",
       contactMe: "Contáctame",
       available: "Disponible para trabajar",
@@ -31,7 +31,7 @@ export const translations = {
       techStackDesc: "Algunas de las tecnologías con las que trabajo para crear soluciones digitales",
     },
     about: {
-      intro: "Soy Ingeniero Informático titulado de la Universidad de La Frontera, apasionado por construir productos digitales robustos y con buena experiencia de usuario. Me especializo en desarrollo fullstack, desde el diseño de la arquitectura hasta la implementación del frontend, siempre con foco en código limpio, buenas prácticas y seguridad.",
+      intro: "Soy Ingeniero Informático titulado de la Universidad de La Frontera (Temuco, Chile). Me gusta entender los problemas antes de escribir código, diseñar arquitecturas que escalen y mantenerlas comprensibles con el tiempo. Disfruto el trabajo fullstack — tanto modelar la lógica del backend como cuidar que el frontend se sienta fluido — y me interesan especialmente la seguridad del software y el análisis estático, área que exploré en profundidad durante mi tesis.",
       trait1: "Orientado al detalle",
       trait2: "Proactivo",
       trait3: "Trabajo en equipo",
@@ -87,7 +87,7 @@ export const translations = {
       greeting: "Hi, I'm",
       name: "Benjamín Serrano Ercoli",
       tagline:
-        "I build digital products end to end: system architecture, robust backend, security by design, and interfaces crafted to the last detail, always with clean code, best practices, and a user experience that makes a difference.",
+        "Software Engineer focused on fullstack development — from architecture design to frontend. I care about clean code, secure systems, and interfaces that are a pleasure to use.",
       viewProjects: "View Projects",
       contactMe: "Contact Me",
       available: "Available for work",
@@ -107,7 +107,7 @@ export const translations = {
       techStackDesc: "Some of the technologies I work with to build digital solutions",
     },
     about: {
-      intro: "I'm a Software Engineer graduated from Universidad de La Frontera, passionate about building robust digital products with great user experience. I specialize in fullstack development, from architecture design to frontend implementation, always focused on clean code, best practices, and security.",
+      intro: "I'm a Software Engineer graduated from Universidad de La Frontera (Temuco, Chile). I like understanding problems before writing code, designing architectures that scale, and keeping them readable over time. I enjoy fullstack work — both crafting backend logic and making the frontend feel smooth — and I'm especially interested in software security and static analysis, an area I explored in depth during my thesis.",
       trait1: "Detail-oriented",
       trait2: "Proactive",
       trait3: "Team player",

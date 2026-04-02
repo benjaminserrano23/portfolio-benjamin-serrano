@@ -1,12 +1,12 @@
 "use client";
 
-import { useLocale } from "./locale-provider";
+import { useTranslations } from "next-intl";
 
 const GITHUB_URL = "https://github.com/benjaminserrano23";
 const LINKEDIN_URL = "https://www.linkedin.com/in/benjamín-serrano-ercoli-a008b63a9";
 
 export function Footer() {
-  const { t } = useLocale();
+  const t = useTranslations("footer");
 
   return (
     <footer className="border-t border-border bg-surface">
@@ -17,7 +17,7 @@ export function Footer() {
               Benjamín Serrano Ercoli
             </p>
             <p className="mt-1 text-xs text-muted-foreground">
-              &copy; {new Date().getFullYear()} — {t.footer.rights}
+              &copy; {new Date().getFullYear()} — {t("rights")}
             </p>
           </div>
 
@@ -45,9 +45,9 @@ export function Footer() {
 
         <div className="mt-6 border-t border-border pt-6 text-center">
           <p className="text-xs text-muted-foreground">
-            {t.footer.builtWith}{" "}
+            {t("builtWith")}{" "}
             <span className="font-medium text-foreground">Next.js</span>,{" "}
-            <span className="font-medium text-foreground">Tailwind CSS</span> {t.footer.and}{" "}
+            <span className="font-medium text-foreground">Tailwind CSS</span> {t("and")}{" "}
             <span className="font-medium text-foreground">TypeScript</span>
           </p>
         </div>

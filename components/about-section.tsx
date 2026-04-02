@@ -1,7 +1,9 @@
 "use client";
 
-import { useLocale } from "./locale-provider";
+import { useTranslations } from "next-intl";
+import { motion } from "framer-motion";
 import { SectionHeading } from "./section-heading";
+import { staggerContainer, fadeInUp, viewportConfig } from "@/lib/motion";
 
 const traits = [
   {
@@ -43,20 +45,29 @@ const traits = [
 ];
 
 export function AboutSection() {
-  const { t } = useLocale();
+  const t = useTranslations();
 
   return (
     <section className="mx-auto max-w-5xl px-6 pb-16">
       <SectionHeading
-        title={t.sections.about}
-        description={t.sections.aboutDesc}
+        title={t("sections.about")}
+        description={t("sections.aboutDesc")}
       />
 
-      <div className="grid gap-8 lg:grid-cols-[1fr_auto]">
+      <motion.div
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={viewportConfig}
+        className="grid gap-8 lg:grid-cols-[1fr_auto]"
+      >
         {/* Text */}
-        <div className="rounded-2xl border border-border bg-card p-8 transition-all duration-300 hover:border-primary/30 hover:shadow-lg dark:hover:shadow-primary/5">
+        <motion.div
+          variants={fadeInUp}
+          className="rounded-2xl border border-border bg-card p-8 transition-all duration-300 hover:border-primary/30 hover:shadow-lg dark:hover:shadow-primary/5"
+        >
           <p className="text-base leading-relaxed text-muted-foreground">
-            {t.about.intro}
+            {t("about.intro")}
           </p>
 
           <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3">
@@ -69,19 +80,22 @@ export function AboutSection() {
                   {trait.icon}
                 </span>
                 <span className="text-xs font-medium text-foreground">
-                  {t.about[trait.key]}
+                  {t(`about.${trait.key}`)}
                 </span>
               </div>
             ))}
           </div>
-        </div>
+        </motion.div>
 
         {/* Stats column */}
-        <div className="flex flex-row gap-4 lg:flex-col lg:justify-center">
+        <motion.div
+          variants={fadeInUp}
+          className="flex flex-row gap-4 lg:flex-col lg:justify-center"
+        >
           {[
-            { value: "2026", label: t.about.statGraduated },
-            { value: "3+", label: t.about.statProjects },
-            { value: "∞", label: t.about.statCoffee },
+            { value: "2026", label: t("about.statGraduated") },
+            { value: "3+", label: t("about.statProjects") },
+            { value: "∞", label: t("about.statCoffee") },
           ].map((stat) => (
             <div
               key={stat.label}
@@ -96,8 +110,8 @@ export function AboutSection() {
               <span className="mt-1 text-xs text-muted-foreground">{stat.label}</span>
             </div>
           ))}
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 }

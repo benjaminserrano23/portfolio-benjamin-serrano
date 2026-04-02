@@ -1,14 +1,16 @@
 "use client";
 
 import Image from "next/image";
+import { useTranslations } from "next-intl";
+import { motion } from "framer-motion";
 import { Button } from "./button";
-import { useLocale } from "./locale-provider";
+import { fadeInUp, staggerContainer, fadeIn } from "@/lib/motion";
 
 const GITHUB_URL = "https://github.com/benjaminserrano23";
 const LINKEDIN_URL = "https://www.linkedin.com/in/benjamín-serrano-ercoli-a008b63a9";
 
 export function Hero() {
-  const { t } = useLocale();
+  const t = useTranslations();
 
   return (
     <section className="relative overflow-hidden">
@@ -21,13 +23,17 @@ export function Hero() {
         }}
       />
 
-
       <div className="relative mx-auto flex max-w-5xl flex-col items-center gap-12 px-6 py-24 sm:py-32 lg:flex-row lg:items-center lg:text-left">
 
         {/* Photo */}
-        <div className="shrink-0">
+        <motion.div
+          variants={fadeIn}
+          initial="hidden"
+          animate="visible"
+          className="shrink-0"
+        >
           <div className="relative h-48 w-48 sm:h-56 sm:w-56">
-            {/* Outer glow that pulses with the border */}
+            {/* Outer glow */}
             <div
               className="absolute -inset-2 rounded-full opacity-60"
               style={{
@@ -37,7 +43,7 @@ export function Hero() {
                 willChange: "transform",
               }}
             />
-            {/* Spinning gradient border — thick */}
+            {/* Spinning gradient border */}
             <div
               className="absolute inset-0 rounded-full"
               style={{
@@ -58,24 +64,29 @@ export function Hero() {
               />
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Text */}
-        <div className="flex flex-col items-center lg:items-start">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          animate="visible"
+          className="flex flex-col items-center lg:items-start"
+        >
           {/* Availability badge */}
-          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-1.5 text-xs font-medium text-muted-foreground shadow-sm">
+          <motion.div variants={fadeInUp} className="mb-5 inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-1.5 text-xs font-medium text-muted-foreground shadow-sm">
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
             </span>
-            {t.hero.available ?? "Disponible para trabajar"}
-          </div>
+            {t("hero.available")}
+          </motion.div>
 
-          <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-primary">
-            {t.hero.greeting}
-          </p>
+          <motion.p variants={fadeInUp} className="mb-2 text-sm font-semibold uppercase tracking-widest text-primary">
+            {t("hero.greeting")}
+          </motion.p>
 
-          <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
+          <motion.h1 variants={fadeInUp} className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
             <span
               className="bg-clip-text text-transparent"
               style={{
@@ -84,24 +95,24 @@ export function Hero() {
                 animation: "gradient-flow 8s ease infinite",
               }}
             >
-              {t.hero.name}
+              {t("hero.name")}
             </span>
-          </h1>
+          </motion.h1>
 
-          <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-            {t.hero.tagline}
-          </p>
+          <motion.p variants={fadeInUp} className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+            {t("hero.tagline")}
+          </motion.p>
 
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-4 lg:justify-start">
+          <motion.div variants={fadeInUp} className="mt-8 flex flex-wrap items-center justify-center gap-4 lg:justify-start">
             <Button href="/projects" size="lg">
-              {t.hero.viewProjects}
+              {t("hero.viewProjects")}
             </Button>
             <Button href="/contact" variant="outline" size="lg">
-              {t.hero.contactMe}
+              {t("hero.contactMe")}
             </Button>
-          </div>
+          </motion.div>
 
-          <div className="mt-8 flex items-center gap-4">
+          <motion.div variants={fadeInUp} className="mt-8 flex items-center gap-4">
             <a
               href={GITHUB_URL}
               target="_blank"
@@ -120,8 +131,8 @@ export function Hero() {
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" /></svg>
             </a>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

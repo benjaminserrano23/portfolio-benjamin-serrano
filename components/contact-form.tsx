@@ -1,12 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { useLocale } from "./locale-provider";
+import { useTranslations } from "next-intl";
 import { Button } from "./button";
 
 export function ContactForm() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
-  const { t } = useLocale();
+  const t = useTranslations();
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -38,31 +38,33 @@ export function ContactForm() {
     "w-full rounded-xl border border-border bg-surface px-4 py-3 text-sm text-foreground placeholder-muted-foreground outline-none ring-0 transition-all duration-200 focus:border-primary focus:ring-2 focus:ring-primary/20";
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-5">
+    <form onSubmit={handleSubmit} className="space-y-5" noValidate>
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
           <label htmlFor="name" className="mb-1.5 block text-sm font-medium text-foreground">
-            {t.contact.name}
+            {t("contact.name")}
           </label>
           <input
             id="name"
             name="name"
             type="text"
             required
-            placeholder={t.contact.namePlaceholder}
+            autoComplete="name"
+            placeholder={t("contact.namePlaceholder")}
             className={inputClass}
           />
         </div>
         <div>
           <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-foreground">
-            {t.contact.email}
+            {t("contact.email")}
           </label>
           <input
             id="email"
             name="email"
             type="email"
             required
-            placeholder={t.contact.emailPlaceholder}
+            autoComplete="email"
+            placeholder={t("contact.emailPlaceholder")}
             className={inputClass}
           />
         </div>
@@ -70,14 +72,14 @@ export function ContactForm() {
 
       <div>
         <label htmlFor="message" className="mb-1.5 block text-sm font-medium text-foreground">
-          {t.contact.message}
+          {t("contact.message")}
         </label>
         <textarea
           id="message"
           name="message"
           rows={5}
           required
-          placeholder={t.contact.messagePlaceholder}
+          placeholder={t("contact.messagePlaceholder")}
           className={inputClass + " resize-none"}
         />
       </div>
@@ -86,26 +88,28 @@ export function ContactForm() {
         <Button type="submit" disabled={status === "loading"} size="lg">
           {status === "loading" ? (
             <>
-              <svg className="animate-spin" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 12a9 9 0 1 1-6.219-8.56" /></svg>
-              {t.contact.sending}
+              <svg aria-hidden="true" className="animate-spin" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 12a9 9 0 1 1-6.219-8.56" /></svg>
+              {t("contact.sending")}
             </>
           ) : (
-            t.contact.send
+            t("contact.send")
           )}
         </Button>
 
-        {status === "success" && (
-          <p className="flex items-center gap-1.5 text-sm font-medium text-green-600 dark:text-green-400">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
-            {t.contact.success}
-          </p>
-        )}
-        {status === "error" && (
-          <p className="flex items-center gap-1.5 text-sm font-medium text-red-600 dark:text-red-400">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" /></svg>
-            {t.contact.error}
-          </p>
-        )}
+        <div aria-live="polite" aria-atomic="true">
+          {status === "success" && (
+            <p className="flex items-center gap-1.5 text-sm font-medium text-green-600 dark:text-green-400">
+              <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
+              {t("contact.success")}
+            </p>
+          )}
+          {status === "error" && (
+            <p role="alert" className="flex items-center gap-1.5 text-sm font-medium text-red-600 dark:text-red-400">
+              <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" /></svg>
+              {t("contact.error")}
+            </p>
+          )}
+        </div>
       </div>
     </form>
   );
