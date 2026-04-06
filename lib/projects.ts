@@ -17,4 +17,28 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/benjaminserrano23/code-quality-cli",
     featured: true,
   },
+  {
+    title: "Git Insights",
+    description:
+      "CLI + HTML report that analyzes git repository history. Contributions by author, file hotspots, commit activity heatmap, and codebase growth timeline with Chart.js graphs.",
+    stack: ["Python", "pandas", "Jinja2"],
+    githubUrl: "https://github.com/benjaminserrano23/git-insights",
+    featured: true,
+  },
+  {
+    title: "Rate Limiter Service",
+    description:
+      "HTTP microservice exposing rate limiting as a REST API. Implements Token Bucket and Sliding Window Log algorithms with in-memory storage and per-key metrics.",
+    stack: ["Go"],
+    githubUrl: "https://github.com/benjaminserrano23/ratelimiter-go",
+    featured: true,
+  },
+  {
+    title: "GoProxy",
+    description:
+      "Lightweight reverse proxy with YAML-configurable middleware pipeline. Includes structured logging, rate limiting, security headers, and response caching.",
+    stack: ["Go"],
+    githubUrl: "https://github.com/benjaminserrano23/goproxy",
+    featured: true,
+  },
 ];
