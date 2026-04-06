@@ -1,0 +1,97 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "projects": "Proyectos",
+    "blog": "Blog",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "greeting": "Hola, soy",
+    "name": "Benjamín Serrano Ercoli",
+    "tagline": "Ingeniero Informático especializado en desarrollo fullstack desde el diseño de la arquitectura hasta el frontend. Me apasiona escribir código limpio, construir sistemas seguros y crear interfaces que se sientan bien al usarlas.",
+    "viewProjects": "Ver Proyectos",
+    "contactMe": "Contáctame",
+    "available": "Disponible para trabajar"
+  },
+  "sections": {
+    "featuredProjects": "Proyectos Destacados",
+    "featuredProjectsDesc": "Una selección de proyectos en los que he trabajado.",
+    "projects": "Proyectos",
+    "projectsDesc": "Colección de proyectos que he construido y a los que he contribuido.",
+    "contact": "Contacto",
+    "contactDesc": "¿Tienes alguna pregunta o quieres trabajar juntos? Envíame un mensaje.",
+    "education": "Educación",
+    "educationDesc": "Formación académica y certificaciones.",
+    "about": "Sobre mí",
+    "aboutDesc": "Quién soy y qué me mueve.",
+    "techStack": "Stack Tecnológico",
+    "techStackDesc": "Algunas de las tecnologías con las que trabajo para crear soluciones digitales",
+    "experience": "Experiencia",
+    "experienceDesc": "Prácticas profesionales y proyectos académicos relevantes.",
+    "blog": "Blog",
+    "blogDesc": "Artículos técnicos sobre ingeniería de software, decisiones de arquitectura y aprendizajes.",
+    "recentPosts": "Posts Recientes",
+    "recentPostsDesc": "Últimos artículos del blog técnico."
+  },
+  "experience": {
+    "thesis": "Tesis",
+    "internship": "Práctica Profesional",
+    "academic": "Proyecto Académico"
+  },
+  "skills": {
+    "advanced": "Avanzado",
+    "intermediate": "Intermedio",
+    "learning": "Aprendiendo"
+  },
+  "blog": {
+    "readMore": "Leer más",
+    "backToBlog": "Volver al Blog",
+    "noPosts": "No hay artículos publicados aún."
+  },
+  "about": {
+    "intro": "Soy Ingeniero Informático titulado de la Universidad de La Frontera (Temuco, Chile). Me gusta entender los problemas antes de escribir código, diseñar arquitecturas que escalen y mantenerlas comprensibles con el tiempo. Disfruto el trabajo fullstack tanto modelar la lógica del backend como cuidar que el frontend se sienta fluido y me interesan especialmente la seguridad del software y el análisis estático, área que exploré en profundidad durante mi tesis.",
+    "trait1": "Orientado al detalle",
+    "trait2": "Proactivo",
+    "trait3": "Trabajo en equipo",
+    "trait4": "Código limpio",
+    "trait5": "Aprendizaje continuo",
+    "trait6": "Enfocado en UX",
+    "statGraduated": "Titulado",
+    "statProjects": "Proyectos",
+    "statCoffee": "Café ☕"
+  },
+  "education": {
+    "degree": "Ingeniería Informática",
+    "university": "Universidad de La Frontera",
+    "location": "Temuco, Chile",
+    "graduated": "Titulado",
+    "viewCV": "Ver CV"
+  },
+  "contact": {
+    "name": "Nombre Completo",
+    "namePlaceholder": "Tu nombre completo",
+    "emailPlaceholder": "hola@ejemplo.com",
+    "messagePlaceholder": "Hola Benjamín, me gustaría hablar sobre...",
+    "email": "Correo electrónico",
+    "message": "Mensaje",
+    "send": "Enviar Mensaje",
+    "sending": "Enviando...",
+    "success": "¡Mensaje enviado exitosamente!",
+    "error": "Algo salió mal. Por favor intenta de nuevo.",
+    "also": "También puedes contactarme en",
+    "orConnect": "o conéctate en"
+  },
+  "project": {
+    "github": "GitHub",
+    "demo": "Demo"
+  },
+  "footer": {
+    "rights": "Todos los derechos reservados.",
+    "builtWith": "Construido con",
+    "and": "y"
+  },
+  "theme": {
+    "light": "Cambiar a modo claro",
+    "dark": "Cambiar a modo oscuro"
+  }
+}

@@ -1,0 +1,171 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --bg: #f8fafc;
+  --fg: #060a0f;
+  --muted: #ecfdf5;
+  --muted-fg: #374151;
+  --border: #bbf7d0;
+  --primary: #059669;
+  --primary-fg: #ffffff;
+  --secondary: #7c3aed;
+  --accent: #ecfdf5;
+  --card: #ffffff;
+  --card-fg: #060a0f;
+  --surface: #f0fdf4;
+  --ring: #6ee7b7;
+}
+
+html.dark {
+  --bg: #07080c;
+  --fg: #f1f5f9;
+  --muted: #141418;
+  --muted-fg: #94a3b8;
+  --border: #1e293b;
+  --primary: #34d399;
+  --primary-fg: #052e16;
+  --secondary: #a78bfa;
+  --accent: #064e3b;
+  --card: #0f1117;
+  --card-fg: #f1f5f9;
+  --surface: #0c0e14;
+  --ring: #059669;
+}
+
+@theme {
+  --color-background: var(--bg);
+  --color-foreground: var(--fg);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-fg);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-fg);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-fg);
+  --color-surface: var(--surface);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* Targeted theme transitions — only on interactive/themed elements, not on all elements (avoids CLS) */
+a, button, input, textarea,
+[class*="border-"],
+[class*="bg-"],
+[class*="text-"] {
+  transition-property: background-color, border-color, color, box-shadow;
+  transition-duration: 150ms;
+  transition-timing-function: ease;
+}
+
+html {
+  scrollbar-gutter: stable;
+  overflow-y: scroll;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+@property --border-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes border-rotate {
+  to { --border-angle: 360deg; }
+}
+
+@keyframes gradient-flow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes dots-drift {
+  0%   { transform: translate(0, 0); }
+  100% { transform: translate(44px, 44px); }
+}
+
+@keyframes dots-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.55; }
+}
+
+@keyframes blob-drift-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(60px, -80px) scale(1.08); }
+  66%       { transform: translate(-40px, 50px) scale(0.95); }
+}
+
+@keyframes blob-drift-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(-70px, 60px) scale(1.05); }
+  66%       { transform: translate(50px, -40px) scale(0.97); }
+}
+
+@keyframes blob-drift-3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(40px, 70px) scale(0.93); }
+  66%       { transform: translate(-60px, -50px) scale(1.06); }
+}
+
+@keyframes ripple-burst {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+  }
+}
+
+.bg-grid-animated {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+}
+
+.bg-grid-animated::before {
+  content: '';
+  position: absolute;
+  /* extra margin so translate doesn't show empty edges */
+  inset: -44px;
+  background-image: radial-gradient(circle, var(--dot-color) 1.5px, transparent 1.5px);
+  background-size: 44px 44px;
+  will-change: transform, opacity;
+  animation:
+    dots-drift 16s linear infinite,
+    dots-pulse 7s ease-in-out infinite;
+}
+
+:root {
+  --dot-color: rgba(5, 150, 105, 0.32);
+}
+
+html.dark {
+  --dot-color: rgba(52, 211, 153, 0.12);
+}
+
+.ripple-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple-effect {
+  position: absolute;
+  border-radius: 50%;
+  width: 160px;
+  height: 160px;
+  background: radial-gradient(circle, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.1) 50%, transparent 70%);
+  animation: ripple-burst 0.55s cubic-bezier(0.2, 0.8, 0.3, 1) forwards;
+  pointer-events: none;
+  z-index: 10;
+}

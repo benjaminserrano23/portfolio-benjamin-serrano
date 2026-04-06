@@ -1,0 +1,60 @@
+---
+title: "Building My Portfolio with Next.js 16 and Tailwind CSS v4"
+date: "2026-03-15"
+description: "A deep dive into the architecture decisions, tech stack choices, and lessons learned while building this portfolio from scratch."
+tags: ["Next.js", "TypeScript", "Tailwind CSS", "Architecture"]
+---
+
+# Building My Portfolio with Next.js 16 and Tailwind CSS v4
+
+When I set out to build my portfolio, I wanted it to be more than just a static page with my name on it. I wanted it to demonstrate real engineering decisions — the kind that show a recruiter or tech lead that I think about architecture, maintainability, and user experience.
+
+## Key Decisions
+
+### Next.js 16 with App Router
+
+I chose Next.js 16 because it brings some interesting breaking changes worth discussing. The biggest one: `params` and `searchParams` are now **Promises**. That means every dynamic page needs to `await` its params:
+
+```typescript
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  // ...
+}
+```
+
+This async-first approach aligns better with React's Server Components model, where data fetching happens at the server boundary.
+
+### Tailwind CSS v4 — No Config File
+
+Tailwind v4 drops `tailwind.config.js` entirely. All configuration lives inline in `globals.css` using `@theme`:
+
+```css
+@theme {
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+}
+```
+
+This co-location of design tokens with styles makes the system more coherent and avoids the disconnect between config and usage.
+
+### Internationalization with next-intl
+
+Rather than a custom context (which was my initial approach), I migrated to `next-intl` for proper URL-based locale routing. The result: `/es/proyectos` and `/en/projects` — two distinct URLs that search engines can index separately.
+
+The `localePrefix: "as-needed"` setting keeps URLs clean for the default locale (Spanish) while prefixing the secondary one (English).
+
+### Framer Motion for Animations
+
+Every section uses `whileInView` with a `staggerChildren` container to create the cascade effect on scroll. The key is setting `once: true` on the viewport config so animations don't repeat on scroll-up — a common UX mistake.
+
+## What I'd Do Differently
+
+If I were starting over, I'd probably configure the `turbopack.root` in `next.config.ts` from day one to avoid workspace root detection warnings. Small thing, but details matter.
+
+## Conclusion
+
+Building this portfolio was a good exercise in making real decisions under constraints. Every component is intentional, every animation has a purpose, and the codebase is structured to grow — because the projects section is going to get a lot more interesting soon.

@@ -1,0 +1,97 @@
+{
+  "nav": {
+    "home": "Home",
+    "projects": "Projects",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "hero": {
+    "greeting": "Hi, I'm",
+    "name": "Benjamín Serrano Ercoli",
+    "tagline": "Software Engineer focused on fullstack development from architecture design to frontend. I care about clean code, secure systems, and interfaces that are a pleasure to use.",
+    "viewProjects": "View Projects",
+    "contactMe": "Contact Me",
+    "available": "Available for work"
+  },
+  "sections": {
+    "featuredProjects": "Featured Projects",
+    "featuredProjectsDesc": "A selection of projects I've worked on.",
+    "projects": "Projects",
+    "projectsDesc": "A collection of projects I've built and contributed to.",
+    "contact": "Contact",
+    "contactDesc": "Have a question or want to work together? Send me a message.",
+    "education": "Education",
+    "educationDesc": "Academic background and certifications.",
+    "about": "About me",
+    "aboutDesc": "Who I am and what drives me.",
+    "techStack": "Tech Stack",
+    "techStackDesc": "Some of the technologies I work with to build digital solutions",
+    "experience": "Experience",
+    "experienceDesc": "Professional internships and relevant academic projects.",
+    "blog": "Blog",
+    "blogDesc": "Technical articles about software engineering, architecture decisions, and lessons learned.",
+    "recentPosts": "Recent Posts",
+    "recentPostsDesc": "Latest articles from the technical blog."
+  },
+  "experience": {
+    "thesis": "Thesis",
+    "internship": "Professional Internship",
+    "academic": "Academic Project"
+  },
+  "skills": {
+    "advanced": "Advanced",
+    "intermediate": "Intermediate",
+    "learning": "Learning"
+  },
+  "blog": {
+    "readMore": "Read more",
+    "backToBlog": "Back to Blog",
+    "noPosts": "No posts published yet."
+  },
+  "about": {
+    "intro": "I'm a Software Engineer graduated from Universidad de La Frontera (Temuco, Chile). I like understanding problems before writing code, designing architectures that scale, and keeping them readable over time. I enjoy fullstack work both crafting backend logic and making the frontend feel smooth and I'm especially interested in software security and static analysis, an area I explored in depth during my thesis.",
+    "trait1": "Detail-oriented",
+    "trait2": "Proactive",
+    "trait3": "Team player",
+    "trait4": "Clean code",
+    "trait5": "Continuous learner",
+    "trait6": "UX-focused",
+    "statGraduated": "Graduated",
+    "statProjects": "Projects",
+    "statCoffee": "Coffee ☕"
+  },
+  "education": {
+    "degree": "Software Engineering",
+    "university": "Universidad de La Frontera",
+    "location": "Temuco, Chile",
+    "graduated": "Graduated",
+    "viewCV": "View CV"
+  },
+  "contact": {
+    "name": "Full Name",
+    "namePlaceholder": "Your full name",
+    "emailPlaceholder": "hello@example.com",
+    "messagePlaceholder": "Hi Benjamín, I'd like to talk about...",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send Message",
+    "sending": "Sending...",
+    "success": "Message sent successfully!",
+    "error": "Something went wrong. Please try again.",
+    "also": "You can also reach me at",
+    "orConnect": "or connect on"
+  },
+  "project": {
+    "github": "GitHub",
+    "demo": "Live Demo"
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "builtWith": "Built with",
+    "and": "and"
+  },
+  "theme": {
+    "light": "Switch to light mode",
+    "dark": "Switch to dark mode"
+  }
+}

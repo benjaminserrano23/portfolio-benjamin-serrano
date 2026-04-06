@@ -1,0 +1,65 @@
+---
+title: "SANe: Static Analysis Engine for JavaScript and TypeScript Ecosystems"
+date: "2026-02-20"
+description: "How I built a static analysis tool that extracts VSCode extensions and GitHub Actions, analyzes their dependencies, and generates directed graphs for vulnerability tracking."
+tags: ["Security", "Static Analysis", "TypeScript", "Graph Theory"]
+---
+
+# SANe: Static Analysis Engine for JS/TS Ecosystems
+
+My thesis project, SANe (Static Analysis eNgine), tackles a specific problem: how do you track vulnerabilities across the dependency trees of JavaScript and TypeScript projects at scale?
+
+## The Problem
+
+The JavaScript ecosystem has a dependency problem. A typical project might have hundreds of transitive dependencies — packages that depend on packages that depend on other packages. When a vulnerability is found in a deep dependency, it's hard to know which projects are affected, how the vulnerability propagates, and what the actual attack surface is.
+
+SANe focuses specifically on two ecosystems: **VSCode extensions** (distributed through the VSCode Marketplace) and **GitHub Actions** (workflows that run in CI/CD pipelines). Both are high-value attack targets — a malicious or vulnerable extension can compromise developer machines, while a compromised GitHub Action can affect entire CI/CD pipelines.
+
+## Architecture Overview
+
+The pipeline has four stages:
+
+### 1. Extraction
+
+SANe connects to the VSCode Marketplace API and GitHub API to extract repository metadata:
+
+```typescript
+async function extractMarketplaceExtensions(query: string): Promise<Extension[]> {
+  const response = await fetch(MARKETPLACE_API, {
+    method: "POST",
+    body: JSON.stringify({ filters: [{ criteria: [{ filterType: 8, value: query }] }] })
+  });
+  // Parse and normalize the response...
+}
+```
+
+### 2. Metadata Structuring
+
+Raw API responses are normalized into a consistent schema with fields for dependencies, author, version history, and download metrics. This structured data feeds directly into the analysis phase.
+
+### 3. Static Analysis
+
+For each repository, SANe performs:
+- **AST traversal** to identify patterns like `eval()`, dynamic requires, and prototype pollution
+- **Dependency resolution** using the `package.json` and lock files
+- **Semver range analysis** to identify packages affected by known CVEs
+
+### 4. Graph Generation
+
+The most interesting part: SANe generates **directed graphs** where nodes are packages and edges represent dependency relationships. Edge weights encode vulnerability severity.
+
+This lets you answer questions like: "If package X has a critical vulnerability, which of the 500 extensions in our dataset are transitively affected?"
+
+## Key Findings
+
+During my analysis, I found patterns in how vulnerabilities propagate through the VSCode extension ecosystem that were non-obvious from static package listings alone. The graph structure revealed clusters of extensions sharing the same vulnerable dependency chains — useful information for both publishers and security researchers.
+
+## What I Learned
+
+Building SANe taught me that the hardest part of security tooling isn't the analysis algorithm — it's the data pipeline. Getting clean, consistent, structured data from multiple heterogeneous APIs is where most of the engineering effort goes.
+
+The other lesson: graph theory is underutilized in software security. Representing dependency trees as directed graphs opens up algorithms (BFS, DFS, cycle detection, centrality measures) that give much richer insights than flat vulnerability reports.
+
+## Code
+
+The tool is written in TypeScript with Python for some analysis components. The source code will be available on GitHub once the thesis is formally published.
