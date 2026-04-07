@@ -28,16 +28,16 @@ export const projects: Project[] = [
   {
     title: "Rate Limiter Service",
     description:
-      "HTTP microservice exposing rate limiting as a REST API. Implements Token Bucket and Sliding Window Log algorithms with in-memory storage and per-key metrics.",
-    stack: ["Go"],
+      "HTTP microservice exposing rate limiting as a REST API. Token Bucket and Sliding Window algorithms with pluggable storage (in-memory or Redis via Lua scripts). Dockerized and integrated with GoProxy.",
+    stack: ["Go", "Redis", "Docker"],
     githubUrl: "https://github.com/benjaminserrano23/ratelimiter-go",
     featured: true,
   },
   {
     title: "GoProxy",
     description:
-      "Lightweight reverse proxy with YAML-configurable middleware pipeline. Includes structured logging, rate limiting, security headers, and response caching.",
-    stack: ["Go"],
+      "Reverse proxy with YAML-configurable middleware pipeline. Delegates rate limiting to an external service (fail-open pattern). Docker Compose stack with Redis-backed ratelimiter.",
+    stack: ["Go", "Docker", "Redis"],
     githubUrl: "https://github.com/benjaminserrano23/goproxy",
     featured: true,
   },
