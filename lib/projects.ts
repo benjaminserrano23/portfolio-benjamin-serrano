@@ -2,6 +2,14 @@ import type { Project } from "./types";
 
 export const projects: Project[] = [
   {
+    title: "Ecommerce API",
+    description:
+      "Full-stack REST API for an ecommerce platform. JWT auth, products CRUD with pagination, shopping cart, order processing with atomic stock management, and rate limiting via external microservice.",
+    stack: ["TypeScript", "Express", "Prisma", "PostgreSQL", "Docker"],
+    githubUrl: "https://github.com/benjaminserrano23/ecommerce-api",
+    featured: true,
+  },
+  {
     title: "Portfolio Website",
     description:
       "Personal portfolio built with Next.js 16, Tailwind CSS v4, and TypeScript. Features dark mode, i18n, and responsive design.",
